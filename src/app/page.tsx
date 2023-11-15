@@ -1,95 +1,106 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import { useState } from "react";
+import { Quadrado, Meio, Texto, SelectContainer, DivInput } from "./styles";
+
+import Select, { GroupBase, StylesConfig } from 'react-select';
+import { allMedications } from "../../public/data";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+
+  const selectStyle: StylesConfig<unknown, false, GroupBase<unknown>> = {
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderRadius: '10px',
+            
+          }),
+          input: (baseStyles) => ({
+            ...baseStyles,
+            width: '379px',
+            height: '30px',
+          }),
+          placeholder: (baseStyles) => ({
+            ...baseStyles,
+            textAlign: 'left', // Align the text to the left
+            fontSize: '15px',
+          }),
+        }
+
+        const MedicationSelector = ({ medications, onSelect }) => {
+          const options = medications.map((medication) => ({
+            label: medication,
+            value: medication,
+          }));
+        
+          const handleChange = (selectedOption) => {
+            onSelect(selectedOption);
+            
+          };
+        
+          return (
+            <Select
+              options={options}
+              isSearchable
+              placeholder="Select Medication..."
+              onChange={handleChange}
+              styles={selectStyle}
             />
-          </a>
-        </div>
-      </div>
+          );
+        };
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        const [firstSelectedMedication, setFirstSelectedMedication] = useState('');
+        const [secondSelectedMedication, setSecondSelectedMedication] = useState('');
+        const [interactionText, setInteractionText] = useState('');
+        const onSelectFirstMedication = (medication) => {
+          setFirstSelectedMedication(medication);
+      
+        };
+        const onSelectSecondMedication = (medication) => {
+          setSecondSelectedMedication(medication);
+        }
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+  return (
+    <main>
+      
+      <Meio>
+      <Quadrado>
+        <Texto>
+          <h1>Interações medicamentosas</h1>
+          <p className="calctxt">Na hora de tomar um remédio, o app vai ajudar você a não cometer erros prejudiciais para a sua saúde!</p>
+          <p className="calchelp">Escolha um medicamento que deseja tomar:</p>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+          <SelectContainer>
+          <MedicationSelector medications={allMedications} onSelect={onSelectFirstMedication}/>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+            
+            <MedicationSelector medications={allMedications} onSelect={onSelectSecondMedication}/>
+          </SelectContainer>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <button className="checkBtn">Checar</button>
+      
+        </Texto>     
+      </Quadrado>
+      <Quadrado>
+        <Texto>
+        <h1>Calculadora de dosagens</h1>
+        <p className="calctxt">Tenha informações confiáveis sobre medicamentos</p>
+        <p className="calchelp">Digite sua idade, o seu peso e o medicamento desejado!</p>
+
+        <DivInput>
+
+        <input className="inputDefault" type="number" placeholder="Digite sua idade"/>
+        <input className="inputDefault" type="numer" placeholder="Digite o seu peso"/>
+
+        <Select styles={selectStyle}  placeholder="Selecione um medicamento">
+        </Select>
+        </DivInput>
+
+          <button className="calckBtn">Calcular</button>
+        
+        </Texto>
+ 
+      </Quadrado>
+      </Meio>
     </main>
   )
 }
