@@ -38,3 +38,12 @@ export const Logo = styled.img`
     transform: scale(1.1);
   }
 `
+
+
+export const Gray = styled.div`
+  .hover-gray:hover {
+  color: #888;
+  }
+`
+
+

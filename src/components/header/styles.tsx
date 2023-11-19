@@ -49,6 +49,7 @@ export const LinkContainer = styled.div`
     font-weight: 600;
     margin: 0 1rem;
     transition: 0.2s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.);
 
     &:hover {
       color: #130277;
@@ -116,5 +117,17 @@ export const SearchButton = styled.img`
 
   &:hover {
     transform: scale(1.1);
+  }
+`
+export const MUISearchComponentContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  margin-right: 20px;
+
+  @media (max-width: 800px) {
+    width: 60vw;
   }
 `

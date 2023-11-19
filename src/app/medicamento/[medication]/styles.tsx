@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Quadrado = styled.div`
+export const Quadrado1 = styled.div`
 
   background-color: #0D0154;
   border-radius: 20px;
-  width: 410px;
+  width: 820px;
 
   padding: 16px;
 
@@ -14,7 +14,7 @@ export const Quadrado = styled.div`
 
 `
 
-export const Meio = styled.div`
+export const Center = styled.div`
 
   display: flex;
   justify-content: center;
@@ -30,16 +30,18 @@ export const Meio = styled.div`
 
 
 
-export const Texto = styled.div`
+export const Text = styled.div`
 
   color: white;
-  text-align: center;
+  text-align: justify;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
 h1 {
   font-size: 20px;
   margin-top: 8px;
+  margin-bottom: 8px;
   padding: 0;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -80,9 +82,9 @@ button{
   border-color: #7D7D7D;
   border-style:none;
   font-size: 25px;
-  margin-top: 10px;
+  margin-top: 16px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  width: 73%;
+  width: 30%;
 }
   
 `
@@ -124,4 +126,14 @@ export const SelectContainer = styled.div`
   gap	: 10px;
 `
 
+
+export const Description = styled.div`
+  
+    color: white;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+`
 

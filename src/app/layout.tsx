@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Roboto } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import StyledComponentsRegistry from '@/lib/registry'
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ weight: ["400", "700"], subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: 'Info Sobria',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <StyledComponentsRegistry>
         <Header />
         {children}
