@@ -1,3 +1,4 @@
+"use client";
 
 import TextField from '@mui/material/TextField';
 import Select, { SelectChangeEvent } from '@mui/material/Select';

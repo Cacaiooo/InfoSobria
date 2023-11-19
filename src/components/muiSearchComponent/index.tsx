@@ -5,7 +5,6 @@ import { MUISearchComponentContainer } from "./styles";
 
 import React, { useState } from "react";
 import { Autocomplete,TextField } from '@mui/material';
-import { remedios } from "../../../public/data";
 import { useRouter } from "next/navigation";
 
 export function MUISearchComponent({ className }: { className: string })  {
@@ -17,7 +16,7 @@ export function MUISearchComponent({ className }: { className: string })  {
   const normalizeString = (str: string) => {
     return str.toLocaleLowerCase('en-US').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   };
-  
+
   const getUrlByTitle = (title: string) => {
     title = normalizeString(title);
     return title;
