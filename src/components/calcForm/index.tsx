@@ -6,7 +6,11 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import { useState } from "react";
-export default function CalcForm({setDosagem}: {setDosagem: (dosagem: string) => void }) {
+export default function CalcForm({setDosagem}: {setDosagem: (dosagem: {
+  doseUnicaMin: number;
+  doseUnicaMax: number;
+  doseMaximaDiaria: number;
+}) => void }) {
 
   const calcularDosagem = ( peso: number, medicamento: 'Dipirona') => {
     let doseUnicaMin = 0;
@@ -132,7 +136,7 @@ export default function CalcForm({setDosagem}: {setDosagem: (dosagem: string) =>
         </FormControl>
 
         <Button variant="contained" onClick={() => {
-          const dosagem = calcularDosagem( peso, "Dipirona");
+          const dosagem = calcularDosagem( peso || 0, "Dipirona");
           setDosagem(dosagem);
         }}>
           Calcular
