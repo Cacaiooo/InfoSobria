@@ -33,7 +33,7 @@ export default function Home() {
         <Texto>
         <h1>Calculadora de dosagens</h1>
         <p className="calctxt">Tenha informações confiáveis sobre medicamentos</p>
-        <p className="calchelp">Digite sua idade, o seu peso e o medicamento desejado!</p>
+        <p className="calchelp">Digite o seu peso e o medicamento desejado!</p>
 
         <DivInput>
 
